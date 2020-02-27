@@ -1,0 +1,89 @@
+
+body {
+	background-color: #EEEEEE;
+	font-family: 'Arial';
+}
+
+/*  --------------------------- */
+/* Navbar						*/
+/*  ---------------------------	*/
+
+.navbarDesign{
+	background: linear-gradient(135deg, #556270, #00B6BA);
+	min-height: 80px;
+}
+
+.nav-link {
+	font-size: 15px;
+}
+
+q::before { 
+  content: "/";
+}
+
+@media (max-width: 767px) 
+{
+    .slashes
+    {
+        display: none;
+    }
+}
+
+.containerLeftRight {
+	background: #D3D3D3;
+}
+
+/*  --------------------------- */
+/* Att göra lista				*/
+/*  ---------------------------	*/
+
+.distans {
+	padding: 40px 40px 15px 25px;
+	margin-left: 3%
+}
+
+.inputStyle {
+	box-sizing: border-box;
+	border: 2px solid #ccc;
+	border-radius: 4px;
+	padding: 10px 15px;
+}
+
+.knapp{
+display: inline-block;
+background-color:#00B6BA;
+color:#ffffff;
+border-radius: 5px;
+text-align:center;
+padding: 10px 25px;
+margin-left: 10px;
+margin-top: 10px;
+}
+
+#radera {
+margin-left: 9px;
+background-color: #FF6B6B;
+}
+
+.knapp:hover{
+cursor: pointer;
+}
+
+.attgoralista {
+	font-family: 'Arial';
+	font-size: 14px;
+	word-wrap: break-word;
+}
+
+.attgoralista li {
+  cursor: pointer;
+  margin-top: 30px;
+  padding-bottom: 30px;
+  border: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.distans footer {
+	margin-top: 8px;
+	font-size: 12px;
+}

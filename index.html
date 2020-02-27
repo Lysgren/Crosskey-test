@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+	
+		<!-- Titel på hemsidan -->
+		<title>Crosskey kodövning</title>
+		
+		<!-- Övrig nödvändig kod -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="Oscar Lysgren">
+		<META NAME="Description" CONTENT="En att göra lista, kodövning som en del av anställningsprocessen för Crosskey.">
+		<meta charset="UTF-8">
+		
+		<!-- Favicon -->
+		<link rel="icon" href="favicon.png" type="image/x-icon">
+	
+		<!-- Tillägg Bootstrap och JQuery -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+		<!-- Stylesheet CSS -->
+		<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+ 
+	<nav class="navbar navbar-expand-sm sticky-top navbar-dark py-2 navbarDesign">
+		<div class="container">
+		
+			<!-- Logo -->
+			<a class="navbar-brand" href="#"><b>Crosskey kodövning</b></a>
+			
+			<!-- Knapp för kollapsande navbar -->
+			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar1">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			
+			<!-- Lista och länkar för navbaren -->
+			<div class="collapse navbar-collapse" id="navbar1">
+				<ul class="navbar-nav">
+					
+					<li class="nav-item active">
+						<a class="nav-link" href="#attgoralista">Att göra lista</a>
+					</li>
+						<li><a class="nav-link slashes"><q></q></a></li>
+					<li class="nav-item">
+						<a class="nav-link" href="https://www.crosskey.io/" target="_blank">Crosskeys hemsida</a>
+					</li>
+
+				</ul>
+			</div>
+			
+		</div>
+	</nav>
+	
+	<div class="container-fluid">
+	<div class="row">
+		<div class="col-2 containerLeftRight"></div>
+  
+		<div class="col-8">
+
+			<!-- Textinput -->
+			<form class="distans">
+				<header for="textInput">Lägg till saker i din personliga att göra lista</header>
+				<input class="inputStyle" type="text" name="textInput">
+
+				<!-- Knapp som lägger till den nedskrivna aktiviteten från textinputen i listan -->
+				<div id="läggtill" class="knapp" onsubmit="return validateForm()" method="post" required>Lägg till</div>
+				<!-- Knapp som raderar allt från listan -->
+				<div id="radera" class="knapp">Radera allt</div>
+				<footer><i>*Radera ett objekt från listan genom att dubbelklicka på den.</i></footer>
+			</form>
+
+			<!-- Ordnad lista som automatiskt sätter ett nummer på varje element i listan -->
+			<ol class="attgoralista text-break"><hr/>
+			<li>Sova</li>
+			<li>Koda</li>
+			<li>Äta</li>
+			</ol>
+			
+		</div>
+  
+		<div class="col-2 containerLeftRight"></div> 
+	</div>
+	</div>
+
+	<script type="text/javascript">
+	$(document).ready(
+		function() {
+			// När användaren trycker på "Lägg till"-knappen så skapar denna del ett nytt element i listan med texten från textinputen.
+			$("#läggtill").click(
+				function() {
+					var toAdd = $("input[name=textInput]").val();
+					$("ol").append("<li>" + toAdd + "</li>");
+				});
+
+			// När användaren trycker på "Radera allt"-knappen så tar denna del bort alla element från listan.
+			$("#radera").click(
+				function() {
+				$("ol li").fadeOut("slow");
+				});
+			
+			// Tar bort ett objekt från listan om användaren dubbelklickar på den.
+			$(document).on("dblclick", "li", function() {
+				$(this).fadeOut("slow");
+			});
+		}
+	);
+	</script>
+
+</body>
+</html>
