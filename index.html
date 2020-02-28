@@ -16,11 +16,14 @@
 	
 		<!-- Tillägg Bootstrap och JQuery -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		
+		
 		<!-- Stylesheet CSS -->
 		<link rel="stylesheet" href="style.css">
+		
 
 </head>
 <body>
@@ -62,6 +65,7 @@
 
 			<!-- Textinput -->
 			<form class="distans">
+				<h1>Att göra lista</h1>
 				<header for="textInput">Lägg till saker i din personliga att göra lista</header>
 				<input class="inputStyle" type="text" name="textInput">
 
@@ -74,9 +78,7 @@
 
 			<!-- Ordnad lista som automatiskt sätter ett nummer på varje element i listan -->
 			<ol class="attgoralista text-break"><hr/>
-			<li>Sova</li>
-			<li>Koda</li>
-			<li>Äta</li>
+
 			</ol>
 			
 		</div>
@@ -88,11 +90,12 @@
 	<script type="text/javascript">
 	$(document).ready(
 		function() {
-			// När användaren trycker på "Lägg till"-knappen så skapar denna del ett nytt element i listan med texten från textinputen.
+			// När användaren trycker på "Lägg till"-knappen så skapar denna del ett nytt element i listan med texten från textinputen. Den sätter även in favorit stjärnan.
 			$("#läggtill").click(
 				function() {
 					var toAdd = $("input[name=textInput]").val();
-					$("ol").append("<li>" + toAdd + "</li>");
+					$("ol").append("<li>" + toAdd + "<i>" + "</i>" + "</li>");			
+					$("li i").addClass("star fa fa-star-o fa-2x");
 				});
 
 			// När användaren trycker på "Radera allt"-knappen så tar denna del bort alla element från listan.
@@ -105,6 +108,12 @@
 			$(document).on("dblclick", "li", function() {
 				$(this).fadeOut("slow");
 			});
+
+			// Ändrar stjärnan när man trycker på den.	
+			$(document).on("click", "li i", function() {
+					$(this).toggleClass("fa-star-o fa-star");
+			});
+
 		}
 	);
 	</script>

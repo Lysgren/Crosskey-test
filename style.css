@@ -1,7 +1,7 @@
 
 body {
 	background-color: #EEEEEE;
-	font-family: 'Arial';
+	font-family: 'Calibri';
 }
 
 /*  --------------------------- */
@@ -44,9 +44,9 @@ q::before {
 
 .inputStyle {
 	box-sizing: border-box;
-	border: 2px solid #ccc;
-	border-radius: 4px;
 	padding: 10px 15px;
+	width: 250px;
+	border-radius: 5px;
 }
 
 .knapp{
@@ -60,30 +60,49 @@ margin-left: 10px;
 margin-top: 10px;
 }
 
-#radera {
-margin-left: 9px;
-background-color: #FF6B6B;
-}
-
 .knapp:hover{
 cursor: pointer;
 }
 
+@media (max-width: 767px) 
+{
+    .knapp
+    {
+        margin-left: 0px;
+    }
+}
+
+#radera {
+background-color: #FF6B6B;
+}
+
+.distans footer {
+	margin-top: 8px;
+	font-size: 12px;
+}
+
 .attgoralista {
-	font-family: 'Arial';
+	font-family: 'Calibri';
 	font-size: 14px;
 	word-wrap: break-word;
 }
 
 .attgoralista li {
   cursor: pointer;
-  margin-top: 30px;
-  padding-bottom: 30px;
+  margin-top: 25px;
+  padding-bottom: 25px;
   border: 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.distans footer {
-	margin-top: 8px;
-	font-size: 12px;
+
+.star {
+	color: #FF6B6B;
+	float: right;
+	margin-right: 20px;
+	margin-bottom: -100px;
+}
+
+.star:hover{
+cursor: pointer;
 }
