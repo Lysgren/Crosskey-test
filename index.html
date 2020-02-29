@@ -23,7 +23,6 @@
 		
 		<!-- Stylesheet CSS -->
 		<link rel="stylesheet" href="style.css">
-		
 
 </head>
 <body>
@@ -78,7 +77,6 @@
 
 			<!-- Ordnad lista som automatiskt sätter ett nummer på varje element i listan -->
 			<ol class="attgoralista text-break"><hr/>
-
 			</ol>
 			
 		</div>
@@ -90,12 +88,18 @@
 	<script type="text/javascript">
 	$(document).ready(
 		function() {
-			// När användaren trycker på "Lägg till"-knappen så skapar denna del ett nytt element i listan med texten från textinputen. Den sätter även in favorit stjärnan.
+			// När användaren trycker på "Lägg till"-knappen så skapar denna del ett nytt element i listan med texten från textinputen.
 			$("#läggtill").click(
 				function() {
 					var toAdd = $("input[name=textInput]").val();
-					$("ol").append("<li>" + toAdd + "<i>" + "</i>" + "</li>");			
-					$("li i").addClass("star fa fa-star-o fa-2x");
+					$("ol").append("<li>" + toAdd + "<i>" + "</i>" + "</li>");
+			// Hämtar element i från listan och kontrollerar om den har klassen star. Har den inte det läggs star och andra klasser till
+				var element = document.getElementsByName('li i');
+					if ($("li i").not(".star")) {
+						$("li i").addClass("star fa fa-star fa-2x");
+						}
+					else {
+						}
 				});
 
 			// När användaren trycker på "Radera allt"-knappen så tar denna del bort alla element från listan.
@@ -111,7 +115,7 @@
 
 			// Ändrar stjärnan när man trycker på den.	
 			$(document).on("click", "li i", function() {
-					$(this).toggleClass("fa-star-o fa-star");
+					$(this).toggleClass("fa-star fa-star-o");
 			});
 
 		}
