@@ -14,12 +14,12 @@
 		<!-- Favicon -->
 		<link rel="icon" href="favicon.png" type="image/x-icon">
 	
-		<!-- Tillägg Bootstrap och JQuery -->
+		<!-- Tillägg Bootstrap, JQuery FontAwesome och JQuery UI -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 		
 		<!-- Stylesheet CSS -->
 		<link rel="stylesheet" href="style.css">
@@ -56,6 +56,7 @@
 		</div>
 	</nav>
 	
+	<!-- Boostraps gridsystem för att automatiskt justera storleken på rutorna -->
 	<div class="container-fluid">
 	<div class="row">
 		<div class="col-2 containerLeftRight"></div>
@@ -69,14 +70,14 @@
 				<input class="inputStyle" type="text" name="textInput">
 
 				<!-- Knapp som lägger till den nedskrivna aktiviteten från textinputen i listan -->
-				<div id="läggtill" class="knapp" onsubmit="return validateForm()" method="post" required>Lägg till</div>
+				<div id="läggtill" class="knapp" method="post" required>Lägg till</div>
 				<!-- Knapp som raderar allt från listan -->
 				<div id="radera" class="knapp">Radera allt</div>
-				<footer><i>*Radera ett objekt från listan genom att dubbelklicka på den.</i></footer>
+				<footer><i>*Radera ett objekt från listan genom att dubbelklicka på den. Flytta aktiviteter genom att dra och släppa runt dem.</i></footer>
 			</form>
 
 			<!-- Ordnad lista som automatiskt sätter ett nummer på varje element i listan -->
-			<ol class="attgoralista text-break"><hr/>
+			<ol id="sorterbar" class="attgoralista text-break"><hr/>
 			</ol>
 			
 		</div>
@@ -84,8 +85,9 @@
 		<div class="col-2 containerLeftRight"></div> 
 	</div>
 	</div>
-
-	<script type="text/javascript">
+	
+	<!-- JavaScript och JQuery som gör flera funktionaliteter -->
+	<script>
 	$(document).ready(
 		function() {
 			// När användaren trycker på "Lägg till"-knappen så skapar denna del ett nytt element i listan med texten från textinputen.
@@ -93,29 +95,34 @@
 				function() {
 					var toAdd = $("input[name=textInput]").val();
 					$("ol").append("<li>" + toAdd + "<i>" + "</i>" + "</li>");
+			
 			// Hämtar element i från listan och kontrollerar om den har klassen star. Har den inte det läggs star och andra klasser till
-				var element = document.getElementsByName('li i');
-					if ($("li i").not(".star")) {
-						$("li i").addClass("star fa fa-star fa-2x");
-						}
-					else {
-						}
-				});
+			var element = document.getElementsByName('li i');
+				if ($("li i").not("star")) {
+					$("li i").addClass("star fa fa-star fa-2x");
+					}
+			});
 
 			// När användaren trycker på "Radera allt"-knappen så tar denna del bort alla element från listan.
 			$("#radera").click(
 				function() {
 				$("ol li").fadeOut("slow");
-				});
+			});
 			
 			// Tar bort ett objekt från listan om användaren dubbelklickar på den.
 			$(document).on("dblclick", "li", function() {
 				$(this).fadeOut("slow");
 			});
-
+			
 			// Ändrar stjärnan när man trycker på den.	
 			$(document).on("click", "li i", function() {
 					$(this).toggleClass("fa-star fa-star-o");
+			});
+			
+			// Gör att element från den ordnande listan kan flyttas genom att dra dem. Tillägsfunktion från Jquery-UI 			
+			$( function() {
+				$( "#sorterbar" ).sortable();
+				$( "#sorterbar" ).disableSelection();
 			});
 
 		}
